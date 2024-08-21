@@ -3,9 +3,7 @@ import axios from 'axios';
 import { baseURL } from '../config/axios';
 
 
-
 function useAddMutation(
-  KEY: string ,
   url: string,
 ) {
 
@@ -27,9 +25,7 @@ function useAddMutation(
     console.log(data);
     
   },
-  onError(error, variables, context) {
-    
-  },
+
 }
 )
 }

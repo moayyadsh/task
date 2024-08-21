@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
 import useTableColumns from './useTableColumns'
 import {Table as DataTable} from 'antd'
-import { useGetTeachers } from '../../api/teachers';
+import { useGetSubject } from '../../api/subject';
 
 function Table() {
   
     const columns = useTableColumns();
-    const { data,isLoading} = useGetTeachers({});
+    const { data,isLoading} = useGetSubject({});
 
   
     
@@ -16,8 +15,10 @@ function Table() {
     dataSource={data?.data}
     rowKey="key"
     loading={isLoading}
+    size='large'
     
     />
+    
     
   )
 }

@@ -1,89 +1,87 @@
-import { Button, Table, Modal, Form, Input, Select, Checkbox, CheckboxProps, SelectProps, DatePickerProps, DatePicker, UploadProps, message, Upload } from 'antd'
-
-import useModalStore from '../../../statemangment/model';
-import { UploadOutlined } from '@ant-design/icons';
+import { Form, Input, Select } from 'antd'
+import { useFormikContext } from 'formik';
+import { useGetTeachers } from '../../../api/select';
 import { useState } from 'react';
-
-
 const ModalComponent = () => {
-  const[image,setImage]=useState('')
 
-  const options: SelectProps['options'] = [];
+  const { data, isLoading } = useGetTeachers();
 
-  for (let i = 10; i < 36; i++) {
-    options.push({
-      label: i.toString(36) + i,
-      value: i.toString(36) + i,
-    });
+
+  const { setFieldValue, values } = useFormikContext<any>();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFieldValue(name, value)
+    console.log(value);
+
+
   }
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
 
-  const onChange: CheckboxProps['onChange'] = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-  };
 
-  const onChangeDate: DatePickerProps<DatePickerProps>['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
+
+  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.files?.[0];
+    console.log(value,"value");
+    
+    const name = e.target.name;
+    setFieldValue("image", value)
+
+  }
+  function handleChangeSelect(value: any) {
+    console.log(`selected ${values}`);
+    setFieldValue('select', value);
+
+  }
+  const onSearch = (value: string) => {
+    console.log('search:', value);
   };
-  function handleImage(){
-    const img = {image,id:4}
-    const sendData = new FormData()
-        sendData.append('id','4')
-        sendData.append('image',image)
-        sendData.append('_method','PUT')
- 
-    // updateImage(sendData);
- 
-   }
   
-  
-  return (
 
-    <>
-     tField.js
-<Input
-  type="file"
-  name="file"
-/>
-      <Form.Item
-        name="Text" label="text"
+  return (<>
 
-      >
-        <Input placeholder="Inter A Text" />
-      </Form.Item>
+    <div>
+      <input
+        id="image"
+        type="file"
+        accept="image/*"
+        onChange={handleChangeImage}  name='image' placeholder="Inter A file"
+      />
+    </div>
+    <Form.Item
+      name="Text" label="text"
 
-      <Form.Item
-        name="Date" label="Date"
+    >
+      <Input onChange={handleChange} value={values?.name} name='name' placeholder="Inter A Text" />
+    </Form.Item>
 
-      >
-        <DatePicker onChange={onChangeDate} needConfirm />
-      </Form.Item>
-      <Form.Item>
-        <Select
-          defaultValue="lucy"
-          style={{ width: 120 }}
-          loading
-          options={[{ value: 'lucy', label: 'Lucy' }]}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Select
-          mode="multiple"
-          disabled
-          style={{ width: '100%' }}
-          placeholder="Please select"
-          // defaultValue={['a10', 'c12']}
-          onChange={handleChange}
-          options={options}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Checkbox onChange={onChange}>Checkbox</Checkbox>
-      </Form.Item>
-    </>
+    <Form.Item
+    >
+      <Select
+        showSearch
+        placeholder="Select a person"
+        optionFilterProp="name"
+        fieldNames={{label:"name",value:"id"}}
+        value={values?.select }
+        loading={isLoading}
+        onChange={handleChangeSelect}
+        onSearch={onSearch}
+        options={data?.data ?? []}
+        style={{ width: 200 }}
+
+        
+      />
+
+
+    </Form.Item>
+
+  </>
   );
 };
 
 export default ModalComponent;
+
+
+
+
+

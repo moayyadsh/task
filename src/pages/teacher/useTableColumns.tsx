@@ -1,14 +1,12 @@
-
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import Modal from 'antd/es/modal/Modal'
 import useModalStore from '../../statemangment/model';
-import ModalComponent from './modal/ModalForm';
+
 
 
 
 
 function useTableColumns() {
-    const { toggleModal } = useModalStore();
+    const { toggleModalEdit } = useModalStore();
 
     const columns = [
       {
@@ -28,7 +26,7 @@ function useTableColumns() {
     },
     {
         key: '4',
-        title: 'Address',
+        title: 'address',
         dataIndex: 'address'
     },
         {
@@ -38,7 +36,7 @@ function useTableColumns() {
                 
               return <>
                 <EditOutlined
-                onClick={toggleModal}
+                onClick={toggleModalEdit}
                 />
                
                 <DeleteOutlined

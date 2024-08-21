@@ -1,19 +1,22 @@
-import { baseURL, userskey } from "../config/axios";
+
 import useAddMutation from "../function/useAddMutation";
 import useDeleteQuery from "../function/useDeleteMutation";
 import useGetQuery from "../function/useGetQuery";
 import useUpdateQuery from "../function/useUpdateQuery";
 
 export const API = {
-    GET: "/subject?course_id=4",
-    ADD: "/subject",
-    UPDATE: "/subject",
+    GET: "/teacher",
+    ADD: "/teacher",
+    UPDATE: "/teacher",
     DELETE: "/teacher/",
 
   };
 
+  const KEY = "Teacher";
 
-export const useGetTeachers = (param?:any) => useGetQuery(userskey ,  API.GET ,param);
-export const useDeleteTeachers=(param?:any) => useDeleteQuery(userskey ,API.DELETE, param)
-export const useUpdateTeachers=(param?:any) => useUpdateQuery(userskey ,API.UPDATE, param)
-export const useLogin=() => useAddMutation(userskey ,API.ADD)
+export const useGetTeacher = (param?:any) => useGetQuery(KEY ,  API.GET ,param);
+export const useDeleteTeacher=(param?:any) => useDeleteQuery(KEY ,API.DELETE, param)
+export const useUpdateTeacher=(param?:any) => useUpdateQuery(KEY ,API.UPDATE, param)
+export const useAddTeacher=() => useAddMutation(API.ADD)
+
+// export const useLogin=() => useAddMutation(userskey ,API.ADD)
