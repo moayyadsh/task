@@ -9,12 +9,15 @@ function useUpdateQuery(
   url: string,
   params: Record<string, any> = {},
 ) {
-  // https://school-demo-back.point-dev.net/api/subject?course_id=4
  return useMutation( 
-  async (updatData:any) => {
+  async (EditedData:any) => {
     const { data } = await axios.post( baseURL+ url, { 
       headers:{
-       Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a'
+        "Content-Type":"application/json",
+        Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a',
+       "x-cycle-id": 1,
+       "x-branch-id": 1,
+       "x-term-id": 1,
       }
      });
     return data;

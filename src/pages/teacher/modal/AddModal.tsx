@@ -26,14 +26,7 @@ function AddModal() {
       console.error('No image selected.');
     }
 
-    mutate(sendData, {
-      onSuccess: (response) => {
-        console.log('Upload successful:', response);
-      },
-      onError: (error) => {
-        console.error('Upload failed:', error);
-      }
-    });
+    mutate(sendData);
   };
 
   const { isOpenAdd, toggleModalAdd } = useModalStore()
