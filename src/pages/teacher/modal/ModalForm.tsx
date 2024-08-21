@@ -36,6 +36,8 @@ const ModalComponent = () => {
   const onSearch = (value: string) => {
     console.log('search:', value);
   };
+  console.log(data?.data?.[1]?.id);
+
   
 
   return (<>

@@ -16,7 +16,7 @@ export const API = {
 
 export const useGetSubject = (param?:any) => useGetQuery(KEY ,  API.GET ,param);
 export const useDeleteSubject=(param?:any) => useDeleteQuery(KEY ,API.DELETE, param)
-export const useUpdateSubject=(param?:any) => useUpdateQuery(KEY ,API.UPDATE, param)
+export const useUpdateSubject=() => useUpdateQuery(KEY ,API.UPDATE)
 export const useAddSubject=() => useAddMutation(API.ADD)
 
 // export const useLogin=() => useAddMutation(userskey ,API.ADD)
