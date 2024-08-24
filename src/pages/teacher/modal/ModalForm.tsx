@@ -22,11 +22,8 @@ const ModalComponent = () => {
 
   const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.files?.[0];
-    console.log(value,"value");
-    
-    const name = e.target.name;
+    console.log(value,"value");  
     setFieldValue("image", value)
-
   }
   function handleChangeSelect(value: any) {
     console.log(`selected ${values}`);
@@ -36,6 +33,7 @@ const ModalComponent = () => {
   const onSearch = (value: string) => {
     console.log('search:', value);
   };
+  console.log();
   
 
   return (<>
@@ -48,12 +46,8 @@ const ModalComponent = () => {
         onChange={handleChangeImage}  name='image' placeholder="Inter A file"
       />
     </div>
-    <Form.Item
-      name="Text" label="text"
-
-    >
       <Input onChange={handleChange} value={values?.name} name='name' placeholder="Inter A Text" />
-    </Form.Item>
+
 
     <Form.Item
     >

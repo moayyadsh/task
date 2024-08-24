@@ -9,9 +9,10 @@ function useAddMutation(
 
  return useMutation( 
   async (dataToSend:any) => {
+    console.log(dataToSend,"dataToSend");
+    
     const { data } = await axios.post(baseURL+url , dataToSend,{
       headers:{
-        "Content-Type":"application/json",
         Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a',
         "x-cycle-id": 1,
          "x-branch-id": 1,

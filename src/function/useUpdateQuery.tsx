@@ -11,7 +11,7 @@ function useUpdateQuery(
 ) {
  return useMutation( 
   async (EditedData:any) => {
-    const { data } = await axios.post( baseURL+ url, { 
+    const { data } = await axios.post( baseURL+ url,EditedData, { 
       headers:{
         "Content-Type":"application/json",
         Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a',

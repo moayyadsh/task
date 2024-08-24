@@ -1,30 +1,23 @@
 import { Button, Modal } from 'antd'
-import useModalStore from '../../../statemangment/model'
+import useModalStore from '../../../stateManagement/model'
 import ModalComponent from './ModalForm'
 import { Formik, Form } from 'formik'
 import { addSchema, initialValues } from '../FormUtil'
-import { useAddTeacher } from '../../../api/teachers'
 import { useAddSubject } from '../../../api/subject'
-import { useState } from 'react'
 
 function AddModal() {
-  const [image, setImage] = useState<File | null>(null);
   const {mutate} = useAddSubject()
 
   
   const handleSubmit = (values: any) => {
     console.log('Form data:', values);
+    console.log(values?.image,"values?.image");
 
     const sendData = new FormData();
     sendData.append('id', '1');
     sendData.append('name', values.name);
+   sendData.append('image', values?.image);
 
-    if (image) {
-      sendData.append('image', image);
-      console.log('Image appended to FormData:', image);
-    } else {
-      console.error('No image selected.');
-    }
 
     mutate(sendData);
   };

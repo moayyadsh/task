@@ -1,5 +1,5 @@
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import useModalStore from '../../statemangment/model';
+import useModalStore from '../../stateManagement/model';
 
 
 
@@ -32,11 +32,12 @@ function useTableColumns() {
         {
             key: '5',
             title: 'Action',
-            render: () => {
+            render: (text:string,record:any) => {
+                // console.log(record);
                 
               return <>
                 <EditOutlined
-                onClick={toggleModalEdit}
+              onClick={() => toggleModalEdit( record)} 
                 />
                
                 <DeleteOutlined

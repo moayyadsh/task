@@ -5,15 +5,13 @@ import { useGetSubject } from '../../api/subject';
 function Table() {
   
     const columns = useTableColumns();
-    const { data,isLoading} = useGetSubject({});
-
-  
+    const { data,isLoading} = useGetSubject({});    
     
   return (
     <DataTable
     columns = {columns as any} 
     dataSource={data?.data}
-    rowKey="key"
+    rowKey="id"
     loading={isLoading}
     size='large'
     

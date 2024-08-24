@@ -1,6 +1,6 @@
 
 import { Button, Modal } from 'antd'
-import useModalStore from '../../../statemangment/model'
+import useModalStore from '../../../stateManagement/model'
 import ModalComponent from './ModalForm'
 import {  Formik, Form } from 'formik'
 import { imageSchema, initialValues } from '../FormUtil'
@@ -10,15 +10,17 @@ import { useUpdateSubject } from '../../../api/subject'
 function EditModal() {
   // const { mutate: addImage } = useAddMutation(baseURL, API.ADD)
   const {mutate} = useUpdateSubject()
-  const { isOpenEdit, toggleModalEdit } = useModalStore()
+  const { isOpenEdit, record,toggleModalEdit } = useModalStore()
 
   const handelSubmit = (values:any )=>{
 
     const EditedData = structuredClone(values);
   
-    mutate({...EditedData})
+    mutate({...EditedData,"_method":"PUT"})
 
   }
+  console.log(record);
+  
 
   return (
     <>
@@ -29,7 +31,7 @@ function EditModal() {
    
       >
       <Formik
-        initialValues={initialValues}
+        initialValues={initialValues(record)}
         validationSchema={imageSchema}
         onSubmit={handelSubmit}
       >

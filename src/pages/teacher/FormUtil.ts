@@ -1,10 +1,18 @@
 
 import * as yup from "yup"
+import useModalStore from "../../stateManagement/model"
 
-export const   initialValues = {
-    name: '', image: null ,select:null
+
+
+export const   initialValues =(record:any)=> 
+{
+    // console.log(record);
+    
+    return ({
+        name:record?.name, image: record?.image ,select:record?.select
+    })
+    
 }
-
 export const addSchema =yup.object().shape({
 
 })
