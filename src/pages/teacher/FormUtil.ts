@@ -6,10 +6,12 @@ import useModalStore from "../../stateManagement/model"
 
 export const   initialValues =(record:any)=> 
 {
-    // console.log(record);
+    console.log(record?.image);
     
     return ({
-        name:record?.name, image: record?.image ,select:record?.select
+        name: record?.name || '',
+        image: record?.image || null,
+        select: record?.select || '',
     })
     
 }

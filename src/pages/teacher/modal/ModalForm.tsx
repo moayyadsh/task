@@ -42,9 +42,10 @@ const ModalComponent = () => {
       <input
         id="image"
         type="file"
-        accept="image/*"
         onChange={handleChangeImage}  name='image' placeholder="Inter A file"
       />
+      
+      {values.image && <img src={values.image} alt="Selected" style={{ maxWidth: '10%',maxHeight:'10%' }} />}
     </div>
       <Input onChange={handleChange} value={values?.name} name='name' placeholder="Inter A Text" />
 
@@ -62,6 +63,7 @@ const ModalComponent = () => {
         onSearch={onSearch}
         options={data?.data ?? []}
         style={{ width: 200 }}
+        
 
         
       />

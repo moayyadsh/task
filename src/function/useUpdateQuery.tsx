@@ -11,17 +11,17 @@ function useUpdateQuery(
 ) {
  return useMutation( 
   async (EditedData:any) => {
-    const { data } = await axios.post( baseURL+ url,EditedData, { 
+    const { data } =await axios.post(baseURL + url + "/"+EditedData?.id
+      , EditedData,{
       headers:{
-        "Content-Type":"application/json",
-        Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a',
+         Authorization:'Bearer FVKuMLqSwyKTEUQTDNXdtFE2aK0G9oQyHFkg6mlk2f63654a',
        "x-cycle-id": 1,
        "x-branch-id": 1,
        "x-term-id": 1,
       }
-     });
+    });
     return data;
   },)
 }
 
-export default useUpdateQuery;
+export default useUpdateQuery;       
