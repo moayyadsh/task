@@ -1,7 +1,6 @@
 import { Form, Input, Select } from 'antd'
 import { useFormikContext } from 'formik';
 import { useGetTeachers } from '../../../api/select';
-import { useState } from 'react';
 const ModalComponent = () => {
 
   const { data, isLoading } = useGetTeachers();

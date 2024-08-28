@@ -1,4 +1,4 @@
-function appendData(formData, data) {
+export function appendData(formData:any, data:any) {
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             if (typeof data[key] === 'object' && data[key] !== null) {
@@ -12,11 +12,4 @@ function appendData(formData, data) {
             }
         }
     }
-}
-const values = {
-    id: '1',
-    name: 'exampleName',
-    image: someImageFile, 
-};
-const sendData = new FormData();
-appendData(sendData, values);
+}   

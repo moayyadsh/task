@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { baseURL } from '../config/axios';
+import { baseURL } from '../../config/axios';
 
 
 function useGetQuery(

@@ -5,7 +5,7 @@ import ModalComponent from './ModalForm'
 import {  Formik, Form } from 'formik'
 import { imageSchema, initialValues } from '../FormUtil'
 import { useUpdateSubject } from '../../../api/subject'
-import { useGetTeachers } from '../../../api/select'
+import { appendData } from '../../../api/helper/useFormData'
 
 
 function EditModal() {
@@ -13,13 +13,14 @@ function EditModal() {
   const { isOpenEdit, record,toggleModalEdit } = useModalStore()
 
   const handelSubmit = (values:any )=>{
-    // const EditedData = structuredClone(values);
-    const EditedData = new FormData();
-    EditedData.append('id', '1');
-    EditedData.append('name', values.name);
-    EditedData.append('image', values?.image);
-  
- mutate({...EditedData,"_method":"PUT",id:record.id})
+
+    // const EditedData = new FormData();
+    // EditedData.append('id', '1');
+    // EditedData.append('name', values.name);
+    // EditedData.append('image', values?.image);
+    const sendData = new FormData();
+    appendData(sendData, values);
+ mutate({...sendData,"_method":"PUT",id:record.id})
 
   }
 

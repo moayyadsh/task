@@ -1,6 +1,6 @@
-import useDeleteQuery from "../function/useDeleteMutation";
-import useGetQuery from "../function/useGetQuery";
-import useUpdateQuery from "../function/useUpdateQuery";
+import useDeleteQuery from "./helper/useDeleteMutation";
+import useGetQuery from "./helper/useGetQuery";
+import useUpdateQuery from "./helper/useUpdateQuery";
 
 export const API = {
     GET: "/teacher",
